@@ -1,0 +1,401 @@
+<!DOCTYPE html><html lang="en" ><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><meta name="generator" content="Jekyll v4.2.2" /><meta property="og:title" content="Go begin" /><meta property="og:locale" content="en" /><meta name="description" content="Go 开发环境配置 Go下载地址: https://go.dev/doc/install." /><meta property="og:description" content="Go 开发环境配置 Go下载地址: https://go.dev/doc/install." /><link rel="canonical" href="https://qyuan97.github.io/posts/Go-begin/" /><meta property="og:url" content="https://qyuan97.github.io/posts/Go-begin/" /><meta property="og:site_name" content="Elric’s Homepage" /><meta property="og:type" content="article" /><meta property="article:published_time" content="2022-07-08T10:15:00+08:00" /><meta name="twitter:card" content="summary" /><meta property="twitter:title" content="Go begin" /><meta name="twitter:site" content="@twitter_username" /> <script type="application/ld+json"> {"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2022-07-08T20:35:16+08:00","datePublished":"2022-07-08T10:15:00+08:00","description":"Go 开发环境配置 Go下载地址: https://go.dev/doc/install.","headline":"Go begin","mainEntityOfPage":{"@type":"WebPage","@id":"https://qyuan97.github.io/posts/Go-begin/"},"url":"https://qyuan97.github.io/posts/Go-begin/"}</script><title>Go begin | Elric's Homepage</title><link rel="apple-touch-icon" sizes="180x180" href="/assets/img/favicons/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicons/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicons/favicon-16x16.png"><link rel="manifest" href="/assets/img/favicons/site.webmanifest"><link rel="shortcut icon" href="/assets/img/favicons/favicon.ico"><meta name="apple-mobile-web-app-title" content="Elric's Homepage"><meta name="application-name" content="Elric's Homepage"><meta name="msapplication-TileColor" content="#da532c"><meta name="msapplication-config" content="/assets/img/favicons/browserconfig.xml"><meta name="theme-color" content="#ffffff"><link rel="preconnect" href="https://fonts.googleapis.com" ><link rel="dns-prefetch" href="https://fonts.googleapis.com" ><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="dns-prefetch" href="https://fonts.gstatic.com" crossorigin><link rel="preconnect" href="https://fonts.googleapis.com" ><link rel="dns-prefetch" href="https://fonts.googleapis.com" ><link rel="preconnect" href="https://cdn.jsdelivr.net" ><link rel="dns-prefetch" href="https://cdn.jsdelivr.net" ><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato&family=Source+Sans+Pro:wght@400;600;700;900&display=swap"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.11.2/css/all.min.css"><link rel="stylesheet" href="/assets/css/style.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@1.0.1/dist/bootstrap-toc.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/magnific-popup@1/dist/magnific-popup.min.css"> <script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script> <script type="text/javascript"> class ModeToggle { static get MODE_KEY() { return "mode"; } static get MODE_ATTR() { return "data-mode"; } static get DARK_MODE() { return "dark"; } static get LIGHT_MODE() { return "light"; } static get ID() { return "mode-toggle"; } constructor() { if (this.hasMode) { if (this.isDarkMode) { if (!this.isSysDarkPrefer) { this.setDark(); } } else { if (this.isSysDarkPrefer) { this.setLight(); } } } let self = this; /* always follow the system prefers */ this.sysDarkPrefers.addEventListener("change", () => { if (self.hasMode) { if (self.isDarkMode) { if (!self.isSysDarkPrefer) { self.setDark(); } } else { if (self.isSysDarkPrefer) { self.setLight(); } } self.clearMode(); } self.notify(); }); } /* constructor() */ get sysDarkPrefers() { return window.matchMedia("(prefers-color-scheme: dark)"); } get isSysDarkPrefer() { return this.sysDarkPrefers.matches; } get isDarkMode() { return this.mode === ModeToggle.DARK_MODE; } get isLightMode() { return this.mode === ModeToggle.LIGHT_MODE; } get hasMode() { return this.mode != null; } get mode() { return sessionStorage.getItem(ModeToggle.MODE_KEY); } /* get the current mode on screen */ get modeStatus() { if (this.isDarkMode || (!this.hasMode && this.isSysDarkPrefer)) { return ModeToggle.DARK_MODE; } else { return ModeToggle.LIGHT_MODE; } } setDark() { $('html').attr(ModeToggle.MODE_ATTR, ModeToggle.DARK_MODE); sessionStorage.setItem(ModeToggle.MODE_KEY, ModeToggle.DARK_MODE); } setLight() { $('html').attr(ModeToggle.MODE_ATTR, ModeToggle.LIGHT_MODE); sessionStorage.setItem(ModeToggle.MODE_KEY, ModeToggle.LIGHT_MODE); } clearMode() { $('html').removeAttr(ModeToggle.MODE_ATTR); sessionStorage.removeItem(ModeToggle.MODE_KEY); } /* Notify another plugins that the theme mode has changed */ notify() { window.postMessage({ direction: ModeToggle.ID, message: this.modeStatus }, "*"); } } /* ModeToggle */ const toggle = new ModeToggle(); function flipMode() { if (toggle.hasMode) { if (toggle.isSysDarkPrefer) { if (toggle.isLightMode) { toggle.clearMode(); } else { toggle.setLight(); } } else { if (toggle.isDarkMode) { toggle.clearMode(); } else { toggle.setDark(); } } } else { if (toggle.isSysDarkPrefer) { toggle.setLight(); } else { toggle.setDark(); } } toggle.notify(); } /* flipMode() */ </script><body data-spy="scroll" data-target="#toc" data-topbar-visible="true"><div id="sidebar" class="d-flex flex-column align-items-end"><div class="profile-wrapper text-center"><div id="avatar"> <a href="/" alt="avatar" class="mx-auto"> <img src=" /assets/img/avatar/avatar.jpeg " alt="avatar" onerror="this.style.display='none'"> </a></div><div class="site-title mt-3"> <a href="/">Elric's Homepage</a></div><div class="site-subtitle font-italic">good good study, day day up!</div></div><ul class="w-100"><li class="nav-item"> <a href="/" class="nav-link"> <i class="fa-fw fas fa-home ml-xl-3 mr-xl-3 unloaded"></i> <span>HOME</span> </a><li class="nav-item"> <a href="/categories/" class="nav-link"> <i class="fa-fw fas fa-stream ml-xl-3 mr-xl-3 unloaded"></i> <span>CATEGORIES</span> </a><li class="nav-item"> <a href="/tags/" class="nav-link"> <i class="fa-fw fas fa-tag ml-xl-3 mr-xl-3 unloaded"></i> <span>TAGS</span> </a><li class="nav-item"> <a href="/archives/" class="nav-link"> <i class="fa-fw fas fa-archive ml-xl-3 mr-xl-3 unloaded"></i> <span>ARCHIVES</span> </a><li class="nav-item"> <a href="/about/" class="nav-link"> <i class="fa-fw fas fa-info-circle ml-xl-3 mr-xl-3 unloaded"></i> <span>ABOUT</span> </a></ul><div class="sidebar-bottom mt-auto d-flex flex-wrap justify-content-center align-items-center"> <button class="mode-toggle btn" aria-label="Switch Mode"> <i class="fas fa-adjust"></i> </button> <span class="icon-border"></span> <a href="https://github.com/qyuan97" aria-label="github" target="_blank" rel="noopener"> <i class="fab fa-github"></i> </a> <a href="https://twitter.com/twitter_username" aria-label="twitter" target="_blank" rel="noopener"> <i class="fab fa-twitter"></i> </a> <a href=" javascript:location.href = 'mailto:' + ['xieqyhit','gmail.com'].join('@')" aria-label="email" > <i class="fas fa-envelope"></i> </a> <a href="/feed.xml" aria-label="rss" > <i class="fas fa-rss"></i> </a></div></div><div id="topbar-wrapper" class="row justify-content-center"><div id="topbar" class="col-11 d-flex h-100 align-items-center justify-content-between"> <span id="breadcrumb"> <span> <a href="/"> Home </a> </span> <span>Go begin</span> </span> <i id="sidebar-trigger" class="fas fa-bars fa-fw"></i><div id="topbar-title"> Post</div><i id="search-trigger" class="fas fa-search fa-fw"></i> <span id="search-wrapper" class="align-items-center"> <i class="fas fa-search fa-fw"></i> <input class="form-control" id="search-input" type="search" aria-label="search" autocomplete="off" placeholder="Search..."> </span> <span id="search-cancel" >Cancel</span></div></div><div id="main-wrapper"><div id="main"><div class="row"><div id="core-wrapper" class="col-12 col-lg-11 col-xl-8"><div class="post pl-1 pr-1 pl-sm-2 pr-sm-2 pl-md-4 pr-md-4"><h1 data-toc-skip>Go begin</h1><div class="post-meta text-muted"><div> By <em> <a href="https://github.com/qyuan97">xqy</a> </em></div><div class="d-flex"><div> <span> Posted <em class="timeago" data-ts="1657246500" data-toggle="tooltip" data-placement="bottom" data-tooltip-df="llll" > 2022-07-08 </em> </span> <span> Updated <em class="timeago" data-ts="1657283716" data-toggle="tooltip" data-placement="bottom" data-tooltip-df="llll" > 2022-07-08 </em> </span> <span class="readtime" data-toggle="tooltip" data-placement="bottom" title="1687 words"> <em>9 min</em> read</span></div></div></div><div class="post-content"><h2 id="go-开发环境配置"><span class="mr-2">Go 开发环境配置</span><a href="#go-开发环境配置" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2></h2><p>Go下载地址: <a href="https://go.dev/doc/install">https://go.dev/doc/install</a>.</p><p>Go安装的默认目录: <code class="language-plaintext highlighter-rouge">/usr/local/go</code>.</p><p>配置环境变量:</p><div class="language-shell highlighter-rouge"><div class="code-header"> <span data-label-text="Shell"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre><td class="rouge-code"><pre>vim ~/.bash_profile
+
+<span class="nb">export </span><span class="nv">GOROOT</span><span class="o">=</span>/usr/local/go
+<span class="nb">export </span><span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:<span class="nv">$GOROOT</span>/bin
+
+<span class="nb">source</span> ~/.bash_profile
+</pre></table></code></div></div><p>确认安装:</p><div class="language-shell highlighter-rouge"><div class="code-header"> <span data-label-text="Shell"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>go version
+</pre></table></code></div></div><h2 id="hello-world"><span class="mr-2">Hello World</span><a href="#hello-world" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2></h2><div class="language-go highlighter-rouge"><div class="code-header"> <span data-label-text="Go"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre><td class="rouge-code"><pre><span class="k">package</span> <span class="n">main</span>
+
+<span class="k">import</span> <span class="s">"fmt"</span>
+
+<span class="k">func</span> <span class="n">main</span><span class="p">(){</span>
+	<span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="s">"hello world"</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></table></code></div></div><div class="language-shell highlighter-rouge"><div class="code-header"> <span data-label-text="Shell"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre><td class="rouge-code"><pre>go run hello-world.go
+<span class="o">&gt;&gt;</span> hello world
+
+go build hello-world.go
+<span class="nb">ls</span>
+<span class="o">&gt;&gt;</span> hello-world hello-world.go
+
+./hello-world
+<span class="o">&gt;&gt;</span> hello world
+</pre></table></code></div></div><ul><li>go run可以直接运行go代码<li>go build可以将程序编译成二进制文件(Windows平台是.exe可执行文件)</ul><h2 id="包-变量和函数"><span class="mr-2">包 变量和函数</span><a href="#包-变量和函数" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2></h2><h3 id="包"><span class="mr-2">包</span><a href="#包" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3></h3><p>每个Go程序都是由包构成的。程序从main包开始运行。按照约定，包名与导入路径的最后一个元素一致。 例如,<code class="language-plaintext highlighter-rouge">“math/rand”</code>包中的源码均以<code class="language-plaintext highlighter-rouge">package rand</code>语句开始。</p><div class="language-go highlighter-rouge"><div class="code-header"> <span data-label-text="Go"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre><td class="rouge-code"><pre><span class="k">package</span> <span class="n">main</span>
+
+<span class="k">import</span> <span class="p">(</span>
+	<span class="s">"fmt"</span>
+	<span class="s">"math/rand"</span>
+<span class="p">)</span>
+
+<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="s">"My favorite number is: "</span><span class="p">,</span> <span class="n">rand</span><span class="o">.</span><span class="n">Intn</span><span class="p">(</span><span class="m">10</span><span class="p">))</span>
+<span class="p">}</span>
+</pre></table></code></div></div><h3 id="导入"><span class="mr-2">导入</span><a href="#导入" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3></h3><div class="language-go highlighter-rouge"><div class="code-header"> <span data-label-text="Go"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre><td class="rouge-code"><pre><span class="k">package</span> <span class="n">main</span>
+
+<span class="k">import</span><span class="p">(</span>
+	<span class="s">"fmt"</span>
+	<span class="s">"math"</span>
+<span class="p">)</span>
+
+<span class="k">func</span> <span class="n">main</span><span class="p">(){</span>
+	<span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="s">"Now you have %g problems.</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">math</span><span class="o">.</span><span class="n">Sqrt</span><span class="p">(</span><span class="m">7</span><span class="p">))</span>
+<span class="p">}</span>
+</pre></table></code></div></div><p>使用圆括号组合了导入, 这是分组形式的导入, 也可以编写多个导入语句, 使用分组导入语句是更好的形式. 例如:</p><div class="language-go highlighter-rouge"><div class="code-header"> <span data-label-text="Go"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre><td class="rouge-code"><pre><span class="k">import</span> <span class="s">"fmt"</span>
+<span class="k">import</span> <span class="s">"math"</span>
+</pre></table></code></div></div><h3 id="导出名"><span class="mr-2">导出名</span><a href="#导出名" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3></h3><p>在Go中，如果一个名字以大写字母开头，那么它就是已导出的。例如, <code class="language-plaintext highlighter-rouge">Pizza</code>就是个已导出名, <code class="language-plaintext highlighter-rouge">Pi</code>也同样，它导出自<code class="language-plaintext highlighter-rouge">math</code>包。 <code class="language-plaintext highlighter-rouge">pizza</code>和<code class="language-plaintext highlighter-rouge">pi</code>并未以大写字母开头，所以它们是未导出的。 在导入一个包时， 只能引用其中已导出的名字。“未导出”的名字在包外都无法访问。</p><div class="language-go highlighter-rouge"><div class="code-header"> <span data-label-text="Go"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre><td class="rouge-code"><pre><span class="k">package</span> <span class="n">main</span>
+
+<span class="k">import</span> <span class="p">(</span>
+	<span class="s">"fmt"</span>
+	<span class="s">"math"</span>
+<span class="p">)</span>
+
+<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="c">// fmt.Println(math.pi) is wrong</span>
+	<span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">Pi</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></table></code></div></div><h3 id="函数"><span class="mr-2">函数</span><a href="#函数" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3></h3><p>函数可以没有参数或接受多个参数，类型在变量名之后。</p><div class="language-go highlighter-rouge"><div class="code-header"> <span data-label-text="Go"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre><td class="rouge-code"><pre><span class="k">package</span> <span class="n">main</span>
+
+<span class="k">import</span> <span class="s">"fmt"</span>
+
+<span class="k">func</span> <span class="n">add</span><span class="p">(</span><span class="n">x</span> <span class="kt">int</span><span class="p">,</span> <span class="n">y</span> <span class="kt">int</span><span class="p">)</span> <span class="kt">int</span> <span class="p">{</span>
+	<span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+<span class="p">}</span>
+
+<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">add</span><span class="p">(</span><span class="m">42</span><span class="p">,</span> <span class="m">13</span><span class="p">))</span>
+<span class="p">}</span>
+</pre></table></code></div></div><p>当连续两个或者多个函数的形式参数类型相同时，除最后一个类型以外，其它都可以省略。 <code class="language-plaintext highlighter-rouge">x int, y int</code>可以省略为<code class="language-plaintext highlighter-rouge">x, y int</code>。</p><div class="language-go highlighter-rouge"><div class="code-header"> <span data-label-text="Go"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre><td class="rouge-code"><pre><span class="k">package</span> <span class="n">main</span>
+
+<span class="k">import</span> <span class="s">"fmt"</span>
+
+<span class="k">func</span> <span class="n">add</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="kt">int</span><span class="p">)</span> <span class="kt">int</span> <span class="p">{</span>
+	<span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+<span class="p">}</span>
+
+<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">add</span><span class="p">(</span><span class="m">42</span><span class="p">,</span> <span class="m">13</span><span class="p">))</span>
+<span class="p">}</span>
+</pre></table></code></div></div><p>函数可以返回任意数量的返回值</p><div class="language-go highlighter-rouge"><div class="code-header"> <span data-label-text="Go"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre><td class="rouge-code"><pre><span class="k">package</span> <span class="n">main</span>
+
+<span class="k">import</span> <span class="s">"fmt"</span>
+
+<span class="k">func</span> <span class="n">swap</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="kt">string</span><span class="p">)</span> <span class="p">(</span><span class="kt">string</span><span class="p">,</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+	<span class="k">return</span> <span class="n">y</span><span class="p">,</span> <span class="n">x</span>
+<span class="p">}</span>
+
+<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">:=</span> <span class="n">swap</span><span class="p">(</span><span class="s">"hello"</span><span class="p">,</span> <span class="s">"world"</span><span class="p">)</span>
+	<span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></table></code></div></div><p>Go的返回值可以被命名，它们被视作定义在函数顶部的变量。返回值的命名应当具有一定的意义, 它可以作为文档使用。没有参数的<code class="language-plaintext highlighter-rouge">return</code>语句返回已命名的返回值。也就是直接返回。直接返回语句应当仅用于短函数中，在长的函数中，它们会影响代码的可读性。</p><div class="language-go highlighter-rouge"><div class="code-header"> <span data-label-text="Go"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre><td class="rouge-code"><pre><span class="k">package</span> <span class="n">main</span>
+
+<span class="k">import</span> <span class="s">"fmt"</span>
+
+<span class="k">func</span> <span class="n">split</span><span class="p">(</span><span class="n">sum</span> <span class="kt">int</span><span class="p">)</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
+	<span class="n">x</span> <span class="o">=</span> <span class="n">sum</span> <span class="o">*</span> <span class="m">4</span> <span class="o">/</span> <span class="m">9</span>
+	<span class="n">y</span> <span class="o">=</span> <span class="n">sum</span> <span class="o">-</span> <span class="n">x</span>
+	<span class="k">return</span>
+<span class="p">}</span>
+
+<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span> 
+	<span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">split</span><span class="p">(</span><span class="m">17</span><span class="p">))</span>
+<span class="p">}</span>
+</pre></table></code></div></div><h3 id="变量"><span class="mr-2">变量</span><a href="#变量" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3></h3><p><code class="language-plaintext highlighter-rouge">var</code>语句用于声明一个变量列表，跟函数的参数列表一样，类型在最后。<code class="language-plaintext highlighter-rouge">var</code>语句可以出现在包或者函数的级别。</p><div class="language-go highlighter-rouge"><div class="code-header"> <span data-label-text="Go"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre><td class="rouge-code"><pre><span class="k">package</span> <span class="n">main</span>
+
+<span class="k">import</span> <span class="s">"fmt"</span>
+
+<span class="k">var</span> <span class="n">c</span><span class="p">,</span> <span class="n">python</span><span class="p">,</span> <span class="n">java</span> <span class="kt">bool</span>
+
+<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="k">var</span> <span class="n">i</span> <span class="kt">int</span>
+	<span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">python</span><span class="p">,</span> <span class="n">java</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></table></code></div></div><p>变量声明可以包含初始值，每个变量对应一个。如果初始化值已存在，则可以省略类型；变量会从初识值中获得类型。</p><div class="language-go highlighter-rouge"><div class="code-header"> <span data-label-text="Go"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre><td class="rouge-code"><pre><span class="k">package</span> <span class="n">main</span>
+
+<span class="k">import</span> <span class="s">"fmt"</span>
+
+<span class="k">var</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="kt">int</span> <span class="o">=</span> <span class="m">1</span><span class="p">,</span> <span class="m">2</span>
+
+<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="k">var</span> <span class="n">c</span><span class="p">,</span> <span class="n">python</span><span class="p">,</span> <span class="n">java</span> <span class="o">=</span> <span class="no">true</span><span class="p">,</span> <span class="no">false</span><span class="p">,</span> <span class="s">"no!"</span>
+	<span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">python</span><span class="p">,</span> <span class="n">java</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></table></code></div></div><p>在函数中，简洁赋值语句<code class="language-plaintext highlighter-rouge">:=</code>可在类型明确的地方代替<code class="language-plaintext highlighter-rouge">var</code>声明。函数外的每个语句都必须以关键字(<code class="language-plaintext highlighter-rouge">var</code>, <code class="language-plaintext highlighter-rouge">func</code>等等)，因此<code class="language-plaintext highlighter-rouge">:=</code>结构不能在函数外使用。</p><div class="language-go highlighter-rouge"><div class="code-header"> <span data-label-text="Go"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre><td class="rouge-code"><pre><span class="k">package</span> <span class="n">main</span>
+
+<span class="k">import</span> <span class="s">"fmt"</span>
+
+<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="k">var</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="kt">int</span> <span class="o">=</span> <span class="m">1</span><span class="p">,</span> <span class="m">2</span>
+	<span class="n">k</span> <span class="o">:=</span> <span class="m">3</span>
+	<span class="n">c</span><span class="p">,</span> <span class="n">python</span><span class="p">,</span> <span class="n">java</span> <span class="o">:=</span> <span class="no">true</span><span class="p">,</span> <span class="no">false</span><span class="p">,</span> <span class="s">"no!"</span>
+	<span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">python</span><span class="p">,</span> <span class="n">java</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></table></code></div></div><h3 id="基本类型"><span class="mr-2">基本类型</span><a href="#基本类型" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3></h3><p>Go的基本类型</p><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span data-label-text="Plaintext"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+</pre><td class="rouge-code"><pre>bool
+
+string
+
+int int8 int16 int32 int64
+uint uint8 uint16 uint32 uint64 uintptr
+
+byte // uint8的别名
+
+rune // int32的别名，表示一个Unicode码点
+
+float32 float64
+
+complex64 complex128
+</pre></table></code></div></div><p>同导入语句一样，变量声明也可以”分组”成一个语法块. <code class="language-plaintext highlighter-rouge">int</code>, <code class="language-plaintext highlighter-rouge">uint</code>和<code class="language-plaintext highlighter-rouge">uintptr</code>在32位系统上通常为32位宽，在64位系统上则为64位宽。当需要一个整数值时应使用<code class="language-plaintext highlighter-rouge">int</code>类型，除非有特殊的理由使用固定大小或无符号的整数类型。</p><div class="language-go highlighter-rouge"><div class="code-header"> <span data-label-text="Go"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+</pre><td class="rouge-code"><pre><span class="k">package</span> <span class="n">main</span>
+
+<span class="k">import</span> <span class="p">(</span>
+	<span class="s">"fmt"</span>
+	<span class="s">"math/complex"</span>
+<span class="p">)</span>
+
+<span class="k">var</span> <span class="p">(</span>
+	<span class="n">ToBe</span> <span class="kt">bool</span> <span class="o">=</span> <span class="no">false</span>
+	<span class="n">MaxInt</span> <span class="kt">uint64</span> <span class="o">=</span> <span class="m">1</span><span class="o">&lt;&lt;</span><span class="m">64</span> <span class="o">-</span> <span class="m">1</span>
+	<span class="n">z</span> <span class="kt">complex128</span> <span class="o">=</span> <span class="n">cmplx</span><span class="o">.</span><span class="n">Sqrt</span><span class="p">(</span><span class="o">-</span><span class="m">5</span> <span class="o">+</span> <span class="m">12i</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="s">"Type: %T Value:%v</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">ToBe</span><span class="p">,</span> <span class="n">ToBe</span><span class="p">)</span>
+	<span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="s">"Type: %T Value:%v</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">MaxInt</span><span class="p">,</span> <span class="n">MaxInt</span><span class="p">)</span>
+	<span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="s">"Type: %T Value:%v</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></table></code></div></div><p>没有明确初始值的变量声明会被赋予它们的零值</p><p>零值是:</p><ol><li>数值类型为<code class="language-plaintext highlighter-rouge">0</code><li>布尔类型为<code class="language-plaintext highlighter-rouge">false</code><li>字符串为<code class="language-plaintext highlighter-rouge">""</code>(空字符串)</ol><div class="language-go highlighter-rouge"><div class="code-header"> <span data-label-text="Go"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre><td class="rouge-code"><pre><span class="k">package</span> <span class="n">main</span>
+
+<span class="k">import</span> <span class="s">"fmt"</span>
+
+<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="k">var</span> <span class="n">i</span> <span class="kt">int</span>
+	<span class="k">var</span> <span class="n">f</span> <span class="kt">float64</span>
+	<span class="k">var</span> <span class="n">b</span> <span class="kt">bool</span>
+	<span class="k">var</span> <span class="n">s</span> <span class="kt">string</span>
+	<span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="s">"%v %v %v %q</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></table></code></div></div><p>表达式<code class="language-plaintext highlighter-rouge">T(v)</code>将<code class="language-plaintext highlighter-rouge">v</code>转换为类型<code class="language-plaintext highlighter-rouge">T</code> 一些关于数值的转换:</p><div class="language-go highlighter-rouge"><div class="code-header"> <span data-label-text="Go"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre><td class="rouge-code"><pre><span class="k">var</span> <span class="n">i</span> <span class="kt">int</span> <span class="o">=</span> <span class="m">42</span>
+<span class="k">var</span> <span class="n">f</span> <span class="kt">float64</span> <span class="o">=</span> <span class="kt">float64</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="k">var</span> <span class="n">u</span> <span class="kt">uint</span> <span class="o">=</span> <span class="kt">uint</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+</pre></table></code></div></div><p>或者，更加简单的形式:</p><div class="language-go highlighter-rouge"><div class="code-header"> <span data-label-text="Go"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre><td class="rouge-code"><pre><span class="n">i</span> <span class="o">:=</span> <span class="m">42</span>
+<span class="n">f</span> <span class="o">:=</span> <span class="kt">float64</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="n">u</span> <span class="o">:=</span> <span class="kt">uint</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+</pre></table></code></div></div><p>与C不同的是，Go在不同类型的项之间赋值时需要显式转换。</p><div class="language-go highlighter-rouge"><div class="code-header"> <span data-label-text="Go"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre><td class="rouge-code"><pre><span class="k">package</span> <span class="n">main</span> 
+
+<span class="k">import</span> <span class="p">(</span>
+	<span class="s">"fmt"</span>
+	<span class="s">"math"</span>
+<span class="p">)</span>
+
+<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="k">var</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="kt">int</span> <span class="o">=</span> <span class="m">3</span><span class="p">,</span> <span class="m">4</span>
+	<span class="k">var</span> <span class="n">f</span> <span class="kt">float64</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">Sqrt</span><span class="p">(</span><span class="kt">float64</span><span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="o">*</span><span class="n">y</span><span class="p">))</span>
+	<span class="k">var</span> <span class="n">z</span> <span class="kt">uint</span> <span class="o">=</span> <span class="kt">uint</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+	<span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></table></code></div></div><p>当声明一个变量而不指定其类型时，变量的类型将由右值推导得出。当右值声明了类型时，新变量的类型与其相同。</p><div class="language-go highlighter-rouge"><div class="code-header"> <span data-label-text="Go"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre><td class="rouge-code"><pre><span class="k">var</span> <span class="n">i</span> <span class="kt">int</span>
+<span class="n">j</span> <span class="o">:=</span> <span class="n">i</span>
+</pre></table></code></div></div><p>当右边包含未指明类型的数值常量时，新变量的类型取决于常量的精度:</p><div class="language-go highlighter-rouge"><div class="code-header"> <span data-label-text="Go"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre><td class="rouge-code"><pre><span class="n">i</span> <span class="o">:=</span> <span class="m">42</span>
+<span class="n">f</span> <span class="o">:=</span> <span class="m">3.142</span>
+<span class="n">g</span> <span class="o">:=</span> <span class="m">0.867</span> <span class="o">+</span> <span class="m">0.5i</span>
+</pre></table></code></div></div><p>常量的声明与变量相似，只不过是使用<code class="language-plaintext highlighter-rouge">const</code>关键字。常量可以是字符，字符串，布尔值或数值 常量不能用<code class="language-plaintext highlighter-rouge">:=</code>语法声明。</p><blockquote><p><code class="language-plaintext highlighter-rouge">%T</code>, <code class="language-plaintext highlighter-rouge">%v</code>, <code class="language-plaintext highlighter-rouge">%q</code>分别是输出 Type, value, string</p></blockquote></div><div class="post-tail-wrapper text-muted"><div class="post-meta mb-3"> <i class="far fa-folder-open fa-fw mr-1"></i> <a href='/categories/go-basic/'>Go Basic</a></div><div class="post-tags"> <i class="fa fa-tags fa-fw mr-1"></i> <a href="/tags/go-basic/" class="post-tag no-text-decoration" >Go Basic</a></div><div class="post-tail-bottom d-flex justify-content-between align-items-center mt-3 pt-5 pb-2"><div class="license-wrapper"> This post is licensed under <a href="https://creativecommons.org/licenses/by/4.0/"> CC BY 4.0 </a> by the author.</div><div class="share-wrapper"> <span class="share-label text-muted mr-1">Share</span> <span class="share-icons"> <a href="https://twitter.com/intent/tweet?text=Go begin - Elric&#39;s Homepage&amp;url=https://qyuan97.github.io/posts/Go-begin/" data-toggle="tooltip" data-placement="top" title="Twitter" target="_blank" rel="noopener" aria-label="Twitter"> <i class="fa-fw fab fa-twitter"></i> </a> <a href="https://www.facebook.com/sharer/sharer.php?title=Go begin - Elric&#39;s Homepage&amp;u=https://qyuan97.github.io/posts/Go-begin/" data-toggle="tooltip" data-placement="top" title="Facebook" target="_blank" rel="noopener" aria-label="Facebook"> <i class="fa-fw fab fa-facebook-square"></i> </a> <a href="https://t.me/share/url?url=https://qyuan97.github.io/posts/Go-begin/&amp;text=Go begin - Elric&#39;s Homepage" data-toggle="tooltip" data-placement="top" title="Telegram" target="_blank" rel="noopener" aria-label="Telegram"> <i class="fa-fw fab fa-telegram"></i> </a> <i id="copy-link" class="fa-fw fas fa-link small" data-toggle="tooltip" data-placement="top" title="Copy link" data-title-succeed="Link copied successfully!"> </i> </span></div></div></div></div></div><div id="panel-wrapper" class="col-xl-3 pl-2 text-muted"><div class="access"><div id="access-lastmod" class="post"><div class="panel-heading">Recently Updated</div><ul class="post-content pl-0 pb-1 ml-1 mt-2"><li><a href="/posts/Go-begin/">Go begin</a><li><a href="/posts/rust-learning/">Rust begin</a><li><a href="/posts/C++-design-pattern/">Design Pattern</a></ul></div><div id="access-tags"><div class="panel-heading">Trending Tags</div><div class="d-flex flex-wrap mt-3 mb-1 mr-3"> <a class="post-tag" href="/tags/go-basic/">Go Basic</a> <a class="post-tag" href="/tags/code-style-guide/">code_style_guide</a> <a class="post-tag" href="/tags/design-pattern/">design_pattern</a> <a class="post-tag" href="/tags/getopt-getopt-long/">getopt getopt_long</a> <a class="post-tag" href="/tags/multi-thread/">multi_thread</a> <a class="post-tag" href="/tags/rust-learning/">Rust Learning</a> <a class="post-tag" href="/tags/smart-pointer/">smart pointer</a> <a class="post-tag" href="/tags/socket/">socket</a> <a class="post-tag" href="/tags/static-inline-function/">static inline function</a></div></div></div><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@1.0.1/dist/bootstrap-toc.min.js"></script><div id="toc-wrapper" class="pl-0 pr-4 mb-5"><div class="panel-heading pl-3 pt-2 mb-2">Contents</div><nav id="toc" data-toggle="toc"></nav></div></div></div><div class="row"><div class="col-12 col-lg-11 col-xl-8"><div id="tail-wrapper" class="pl-1 pr-1 pl-sm-2 pr-sm-2 pl-md-4 pr-md-4"><div id="related-posts" class="mt-5 mb-2 mb-sm-4"><h3 class="pt-2 mt-1 mb-4 ml-1" data-toc-skip>Further Reading</h3><div class="card-deck mb-4"><div class="card"> <a href="/posts/Go-basic/"><div class="card-body"> <em class="timeago small" data-ts="1657236660" > 2022-07-08 </em><h3 class="pt-0 mt-1 mb-3" data-toc-skip>Go 流程控制语句</h3><div class="text-muted small"><p> 流程控制语句 for Go只有一种循环结构: for循环。 基本的for循环由三部分组成，它们用分号隔开: 初始化语句: 在第一次迭代前执行 条件表达式: 在每次迭代前求值 后置语句: 在每次迭代的结尾执行 初始化语句通常为一句短变量声明，该变量声明仅在for语句的作用域中可见。一旦条件表达式的布尔值为false,循环迭代就会终止。 Go的for语句后面的三个构成部分外...</p></div></div></a></div><div class="card"> <a href="/posts/socket/"><div class="card-body"> <em class="timeago small" data-ts="1652284800" > 2022-05-12 </em><h3 class="pt-0 mt-1 mb-3" data-toc-skip>网络编程基础API</h3><div class="text-muted small"><p> 网络编程基础API socket地址API 主机字节序和网络字节序 现代CPU的累加器一次都能装载（至少）4字节（32位），即一个整数。那么这4字节在内存中排列的顺序将影响它被累加器装载成的整数的值。这就是字节序问题。字节序分为大端字节序（big endian）和小端字节序（little endian）。大端字节序是指一个整数的高位字节（23～31 bit）存储在内存的低地址处，低位字节...</p></div></div></a></div><div class="card"> <a href="/posts/naming/"><div class="card-body"> <em class="timeago small" data-ts="1651631100" > 2022-05-04 </em><h3 class="pt-0 mt-1 mb-3" data-toc-skip>命名约定</h3><div class="text-muted small"><p> 命名约定 通用命名规则 函数命名，变量命名，文件命名要有描述性；少用缩写。 文件命名 文件名要全部小写，可以包含下划线_或连字符-.依照项目的约定，如果没有约定，一般_更好。 可接受的文件命名示例： my_useful_class.cc my-usefule-class.cc myusefulclass.cc myusefulclass_test.cc C++文件...</p></div></div></a></div></div></div><div class="post-navigation d-flex justify-content-between"> <a href="/posts/Go-basic/" class="btn btn-outline-primary" prompt="Older"><p>Go 流程控制语句</p></a> <span class="btn btn-outline-primary disabled" prompt="Newer"><p>-</p></span></div></div></div></div><footer class="d-flex w-100 justify-content-center"><div class="d-flex justify-content-between align-items-center text-muted"><div class="footer-left"><p class="mb-0"> © 2022 <a href="https://github.com/qyuan97">xqy</a>. <span data-toggle="tooltip" data-placement="top" title="Except where otherwise noted, the blog posts on this site are licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0) License by the author.">Some rights reserved.</span></p></div><div class="footer-right"><p class="mb-0"> Powered by <a href="https://jekyllrb.com" target="_blank" rel="noopener">Jekyll</a> with <a href="https://github.com/cotes2020/jekyll-theme-chirpy" target="_blank" rel="noopener">Chirpy</a> theme.</p></div></div></footer></div><div id="search-result-wrapper" class="d-flex justify-content-center unloaded"><div class="col-12 col-sm-11 post-content"><div id="search-hints"><div id="access-tags"><div class="panel-heading">Trending Tags</div><div class="d-flex flex-wrap mt-3 mb-1 mr-3"> <a class="post-tag" href="/tags/go-basic/">Go Basic</a> <a class="post-tag" href="/tags/code-style-guide/">code_style_guide</a> <a class="post-tag" href="/tags/design-pattern/">design_pattern</a> <a class="post-tag" href="/tags/getopt-getopt-long/">getopt getopt_long</a> <a class="post-tag" href="/tags/multi-thread/">multi_thread</a> <a class="post-tag" href="/tags/rust-learning/">Rust Learning</a> <a class="post-tag" href="/tags/smart-pointer/">smart pointer</a> <a class="post-tag" href="/tags/socket/">socket</a> <a class="post-tag" href="/tags/static-inline-function/">static inline function</a></div></div></div><div id="search-results" class="d-flex flex-wrap justify-content-center text-muted mt-3"></div></div></div></div><div id="mask"></div><a id="back-to-top" href="#" aria-label="back-to-top" class="btn btn-lg btn-box-shadow" role="button"> <i class="fas fa-angle-up"></i> </a> <script src="https://cdn.jsdelivr.net/npm/simple-jekyll-search@1.10.0/dest/simple-jekyll-search.min.js"></script> <script> SimpleJekyllSearch({ searchInput: document.getElementById('search-input'), resultsContainer: document.getElementById('search-results'), json: '/assets/js/data/search.json', searchResultTemplate: '<div class="pl-1 pr-1 pl-sm-2 pr-sm-2 pl-lg-4 pr-lg-4 pl-xl-0 pr-xl-0"> <a href="{url}">{title}</a><div class="post-meta d-flex flex-column flex-sm-row text-muted mt-1 mb-1"> {categories} {tags}</div><p>{snippet}</p></div>', noResultsText: '<p class="mt-5">Oops! No result founds.</p>', templateMiddleware: function(prop, value, template) { if (prop === 'categories') { if (value === '') { return `${value}`; } else { return `<div class="mr-sm-4"><i class="far fa-folder fa-fw"></i>${value}</div>`; } } if (prop === 'tags') { if (value === '') { return `${value}`; } else { return `<div><i class="fa fa-tag fa-fw"></i>${value}</div>`; } } } }); </script> <script src="https://cdn.jsdelivr.net/combine/npm/magnific-popup@1/dist/jquery.magnific-popup.min.js,npm/lozad/dist/lozad.min.js,npm/clipboard@2/dist/clipboard.min.js"></script> <script src="https://cdn.jsdelivr.net/combine/npm/dayjs@1/dayjs.min.js,npm/dayjs@1/locale/en.min.js,npm/dayjs@1/plugin/relativeTime.min.js,npm/dayjs@1/plugin/localizedFormat.min.js"></script> <script defer src="/assets/js/dist/post.min.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.bundle.min.js"></script> <script defer src="/app.js"></script>
